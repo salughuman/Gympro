@@ -1,6 +1,6 @@
 {
   "name": "gympro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GymPro — Gym Management System",
   "main": "main.js",
   "scripts": {
@@ -12,6 +12,11 @@
     "appId": "com.gympro.app",
     "productName": "GymPro",
     "copyright": "GymPro",
+    "publish": {
+      "provider": "github",
+      "owner": "salughuman",
+      "repo": "Gympro"
+    },
     "directories": {
       "output": "release"
     },
@@ -53,6 +58,7 @@
     "wait-on": "^7.2.0"
   },
   "dependencies": {
+    "electron-updater": "^6.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

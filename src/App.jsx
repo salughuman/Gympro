@@ -192,7 +192,27 @@ export default function App() {
   const TABS = [{ id: "Dashboard", icon: "⊡" }, { id: "Clients", icon: "◻" }, { id: "Attendance", icon: "◎" }, { id: "Sheet", icon: "⊞" }, { id: "Trainers", icon: "⊕" }, { id: "Analytics", icon: "◈" }, ...(isAdmin ? [{ id: "Sync", icon: "↑" }] : [])];
 
   // ── Render ──────────────────────────────────────────────────
-  if (loading) return <div style={{ minHeight: "100vh", background: T.appBg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, color: T.textTertiary }}>Loading data…</div>;
+  if (loading) return (
+    <div style={{ minHeight: "100vh", background: T.appBg, display: "flex", fontFamily: "Inter,system-ui,sans-serif" }}>
+      <style>{globalCSS}{`@keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.1; } }`}</style>
+      <div style={{ width: 220, flexShrink: 0, padding: 24, borderRight: `1px solid ${T.divider}`, display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ height: 40, width: "80%", background: T.divider, borderRadius: 8, animation: "pulse 1.5s infinite ease-in-out" }} />
+        <div style={{ height: 24, width: "60%", background: T.divider, borderRadius: 6, animation: "pulse 1.5s infinite ease-in-out", marginTop: 24 }} />
+        <div style={{ height: 24, width: "90%", background: T.divider, borderRadius: 6, animation: "pulse 1.5s infinite ease-in-out" }} />
+        <div style={{ height: 24, width: "70%", background: T.divider, borderRadius: 6, animation: "pulse 1.5s infinite ease-in-out" }} />
+      </div>
+      <div style={{ flex: 1, padding: "28px 32px", display: "flex", flexDirection: "column", gap: 24 }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ height: 32, width: 200, background: T.divider, borderRadius: 8, animation: "pulse 1.5s infinite ease-in-out" }} />
+          <div style={{ height: 36, width: 120, background: T.divider, borderRadius: 8, animation: "pulse 1.5s infinite ease-in-out" }} />
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
+          {[1, 2, 3, 4].map(i => <div key={i} style={{ height: 100, background: T.card, borderRadius: 16, border: `1px solid ${T.divider}`, animation: "pulse 1.5s infinite ease-in-out" }} />)}
+        </div>
+        <div style={{ height: 300, background: T.card, borderRadius: 16, border: `1px solid ${T.divider}`, animation: "pulse 1.5s infinite ease-in-out" }} />
+      </div>
+    </div>
+  );
   if (!user) return <LoginScreen onLogin={setUser} />;
 
   return (

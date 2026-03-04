@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
+const { autoUpdater } = require("electron-updater");
 
 // ── Data folder: next to the exe ──────────────────────────────
 const dataDir = path.join(app.getPath("userData"), "gympro-data");
@@ -120,6 +121,14 @@ function createWindow() {
     }
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+    createWindow();
+    autoUpdater.checkForUpdatesAndNotify();
+});
+
+autoUpdater.on("update-downloaded", () => {
+    autoUpdater.quitAndInstall();
+});
+
 app.on("window-all-closed", () => { if (process.platform !== "darwin") app.quit(); });
 app.on("activate", () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
