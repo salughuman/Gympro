@@ -1,6 +1,6 @@
 {
   "name": "gympro",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "GymPro — Gym Management System",
   "main": "main.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "publish": {
       "provider": "github",
       "owner": "salughuman",
-      "repo": "Gympro"
+      "repo": "Gympro",
+      "releaseType": "release"
     },
     "directories": {
       "output": "release"
